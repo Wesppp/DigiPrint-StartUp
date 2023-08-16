@@ -6,10 +6,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { OceanWavesComponent } from "./shared/components/ocean-waves/ocean-waves.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OceanWavesComponent
   ],
   imports: [
     BrowserModule,
