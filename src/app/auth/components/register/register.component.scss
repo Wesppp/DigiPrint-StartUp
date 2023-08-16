@@ -1,0 +1,35 @@
+@import "src/styles/constants";
+
+.header {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+
+    &__line {
+      &--active {
+        color: $orange;
+        text-shadow: 0 0 5px $dull-orange;
+      }
+    }
+  }
+}
+
+.container {
+  form {
+    padding: 0 2rem;
+
+    .form-actions {
+      ion-button {
+        width: 100%;
+      }
+    }
+  }
+}
