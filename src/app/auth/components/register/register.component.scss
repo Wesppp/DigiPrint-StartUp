@@ -26,6 +26,17 @@
   form {
     padding: 0 2rem;
 
+    .route-link {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+
+      a {
+        color: $orange;
+        text-decoration: underline;
+      }
+    }
+
     .form-actions {
       ion-button {
         width: 100%;
