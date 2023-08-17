@@ -1,26 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
-import { passwordMatchValidator } from "../../../shared/form-validators/password-match.validator";
-
-interface IRegisterForm {
+interface ILoginForm {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
-  repeatPassword: FormControl<string | null>;
 }
 
-interface IRegisterFormValue {
+interface ILoginFormValue {
   email: string;
   password: string;
-  repeatPassword: string;
 }
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['../base-auth-style/base-auth.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['../base-auth-style/base-auth.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
   public form!: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -30,7 +27,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private createForm(): void {
-    this.form = this.fb.group<IRegisterForm>({
+    this.form = this.fb.group<ILoginForm>({
       email: this.fb.control('', [
         Validators.required,
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
@@ -39,13 +36,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/) // only for eng language
-      ]),
-      repeatPassword: this.fb.control('', [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-    }, {
-      validators: passwordMatchValidator
+      ])
     });
   }
 
@@ -57,11 +48,7 @@ export class RegisterComponent implements OnInit {
     return this.form.get('password');
   }
 
-  public get repeatPassword(): AbstractControl<string> | null {
-    return this.form.get('repeatPassword');
-  }
-
-  public onRegister(formValue: IRegisterFormValue): void {
+  public onRegister(formValue: ILoginFormValue): void {
     const { email, password } = formValue;
 
     console.log(email, password);
