@@ -15,7 +15,7 @@ interface ILoginFormValue {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../base-auth-style/base-auth.component.scss']
+  styleUrls: ['../../styles/base-auth.component.scss']
 })
 export class LoginComponent implements OnInit {
   public form!: FormGroup;

@@ -18,7 +18,7 @@ interface IRegisterFormValue {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../base-auth-style/base-auth.component.scss'],
+  styleUrls: ['../../styles/base-auth.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
