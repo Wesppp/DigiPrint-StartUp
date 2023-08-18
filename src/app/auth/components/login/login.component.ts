@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 interface ILoginForm {
   email: FormControl<string | null>;
@@ -40,14 +40,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public get email(): AbstractControl<string> | null {
-    return this.form.get('email');
-  }
-
-  public get password(): AbstractControl<string> | null {
-    return this.form.get('password');
-  }
-
   public onRegister(formValue: ILoginFormValue): void {
     const { email, password } = formValue;
 
@@ -55,4 +47,6 @@ export class LoginComponent implements OnInit {
 
     this.form.reset();
   }
+
+  protected readonly FormControl = FormControl;
 }

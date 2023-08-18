@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
-import { passwordMatchValidator } from "../../../shared/form-validators/password-match.validator";
+import { passwordMatchValidator } from "../../../shared/form/form-validators/password-match.validator";
 
 interface IRegisterForm {
   email: FormControl<string | null>;
@@ -47,18 +47,6 @@ export class RegisterComponent implements OnInit {
     }, {
       validators: passwordMatchValidator
     });
-  }
-
-  public get email(): AbstractControl<string> | null {
-    return this.form.get('email');
-  }
-
-  public get password(): AbstractControl<string> | null {
-    return this.form.get('password');
-  }
-
-  public get repeatPassword(): AbstractControl<string> | null {
-    return this.form.get('repeatPassword');
   }
 
   public onRegister(formValue: IRegisterFormValue): void {

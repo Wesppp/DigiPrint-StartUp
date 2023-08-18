@@ -6,7 +6,8 @@ import { IonicModule } from "@ionic/angular";
 import { AuthService } from "./services/auth.service";
 import { RegisterComponent } from "./components/register/register.component";
 import { AuthRoutingModule } from "./auth-routing.module";
-import {LoginComponent} from "./components/login/login.component";
+import { LoginComponent } from "./components/login/login.component";
+import { FormControlsModule } from "../shared/form/form-controls/form-controls.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {LoginComponent} from "./components/login/login.component";
     CommonModule,
     AuthRoutingModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormControlsModule
   ],
   providers: [
     AuthService
