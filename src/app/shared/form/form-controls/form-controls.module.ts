@@ -6,12 +6,14 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { EmailControlComponent } from "./email-control/email-control.component";
 import { PasswordControlComponent } from "./password-control/password-control.component";
 import { RepeatPasswordControlComponent } from "./repeat-password-control/repeat-password-control.component";
+import { TextControlComponent } from "./text-control/text-control.component";
 
 @NgModule({
   declarations: [
     EmailControlComponent,
     PasswordControlComponent,
-    RepeatPasswordControlComponent
+    RepeatPasswordControlComponent,
+    TextControlComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,7 @@ import { RepeatPasswordControlComponent } from "./repeat-password-control/repeat
     ReactiveFormsModule,
   ],
   exports: [
+    TextControlComponent,
     EmailControlComponent,
     PasswordControlComponent,
     RepeatPasswordControlComponent

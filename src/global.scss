@@ -85,3 +85,20 @@ ion-input {
     --ion-border-color: #ff6600;
   }
 }
+
+ion-radio {
+  --color-checked: $orange;
+
+  &.radio-checked::part(container) {
+    background: transparent;
+    border-color: $orange;
+  }
+
+  &.radio-checked::part(mark) {
+    width: 8px;
+    height: 8px;
+
+    background: $orange;
+    border-radius: 50%;
+  }
+}

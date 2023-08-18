@@ -38,9 +38,23 @@
     }
 
     .form-actions {
+      display: flex;
+      gap: 1rem;
+
       ion-button {
         width: 100%;
       }
+    }
+  }
+}
+
+ion-radio-group {
+  display: flex;
+  gap: 1rem;
+
+  ion-item {
+    ion-label {
+      margin-right: 10px;
     }
   }
 }

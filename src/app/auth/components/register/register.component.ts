@@ -7,6 +7,10 @@ interface IRegisterForm {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
   repeatPassword: FormControl<string | null>;
+  firstname: FormControl<string | null>;
+  lastname: FormControl<string | null>;
+  birthDate: FormControl<Date | null>;
+  gender: FormControl<string | null>;
 }
 
 interface IRegisterFormValue {
@@ -22,6 +26,7 @@ interface IRegisterFormValue {
 })
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
+  public fromFieldsShowNumber: number = 1;
 
   constructor(private fb: FormBuilder) { }
 
@@ -44,6 +49,22 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ]),
+      firstname: this.fb.control('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.pattern(/^[a-zA-Z0-9]+$/)
+      ]),
+      lastname: this.fb.control('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.pattern(/^[a-zA-Z0-9]+$/)
+      ]),
+      birthDate: this.fb.control(null, [
+        Validators.required
+      ]),
+      gender: this.fb.control('', [
+
+      ]),
     }, {
       validators: passwordMatchValidator
     });
@@ -55,5 +76,13 @@ export class RegisterComponent implements OnInit {
     console.log(email, password);
 
     this.form.reset();
+  }
+
+  public onContinueRegistration(): void {
+    this.fromFieldsShowNumber = 2;
+  }
+
+  public onBackRegistration(): void {
+    this.fromFieldsShowNumber = 1;
   }
 }
