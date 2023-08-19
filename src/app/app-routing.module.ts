@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'phone',
+    loadChildren: () => import('./phone/phone.module').then(m => m.PhoneModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'

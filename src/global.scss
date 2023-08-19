@@ -50,6 +50,10 @@ form {
   }
 }
 
+.orange-font {
+  color: $orange;
+}
+
 .custom-button {
   &.orange {
     --background: #ff6600;

@@ -1,0 +1,22 @@
+@import 'src/styles/constants.scss';
+
+.orange-font {
+  color: $orange;
+}
+:host {
+  --ion-color-success: $orange;
+}
+
+::ng-deep .sc-ion-input-md-h {
+  --highlight-color-valid: $orange;
+}
+.form-action{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+  .custom-button {
+    width: 200px;
+  }
+}
