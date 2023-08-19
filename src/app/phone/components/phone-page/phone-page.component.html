@@ -1,0 +1,39 @@
+<ion-content color="light">
+  <form [formGroup]="form" (ngSubmit)="sendPhone(form.value)">
+    <ion-list [inset]="true">
+      <ion-item [button]="true" [detail]="false" id="select-fruits">
+        <ion-label>Your country</ion-label>
+        <div slot="end" id="selected-fruits" class="orange-font">{{ selectedCountry?.name || 'Select' }}</div>
+      </ion-item>
+      <ion-item>
+        <ion-label class="orange-font"> {{selectedCountry?.code ?? 'Choose country'}}</ion-label>
+        <ion-input
+          placeholder="xxxxxxxxxxx"
+          formControlName="phone"
+          [disabled]="!selectedCountry"
+          [maskito]="phoneMask"
+          [maskitoElement]="maskPredicate"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="form-action">
+      <ion-button
+        type="submit"
+        [disabled]="form.invalid"
+        class="custom-button orange">Send Code
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
+
+<ion-modal trigger="select-fruits" #modal>
+  <ng-template>
+    <app-search-country
+      class="ion-page"
+      title="Select country"
+      [items]="countries"
+      (selectionChange)="countrySelectionChanged($event)"
+      (selectionCancel)="modal.dismiss()"
+    ></app-search-country>
+  </ng-template>
+</ion-modal>

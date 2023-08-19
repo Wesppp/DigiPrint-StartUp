@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <div class="header__text">
+      <span class="header__text__line header__text__line--active">Sign Up</span>
+      <span class="header__text__line">Sign In</span>
+    </div>
+  </div>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onRegister(form.value)">
+      <div class="form-field">
+        <ion-input
+          [class.invalid]="email?.invalid && email?.touched"
+          label="Email"
+          label-placement="floating"
+          fill="outline"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"></ion-input>
+        <small class="error-message"
+               *ngIf="email?.hasError('required') && email?.touched">
+          This field is required
+        </small>
+        <small class="error-message"
+               *ngIf="email?.hasError('pattern') && email?.touched">
+          Please enter a valid email
+        </small>
+      </div>
+      <div class="form-field">
+        <ion-input
+          [class.invalid]="password?.invalid && password?.touched"
+          label="Password"
+          label-placement="floating"
+          fill="outline"
+          type="password"
+          formControlName="password"
+          placeholder="Enter password"></ion-input>
+        <small class="error-message" *ngIf="password?.hasError('pattern') && password?.touched">
+          Weak password (you must use special characters, numbers, uppercase and uppercase letters)
+        </small>
+        <small class="error-message"
+               *ngIf="password?.hasError('required') && password?.touched">
+          This field is required
+        </small>
+        <small class="error-message"
+               *ngIf="password?.hasError('minlength') && password?.touched">
+          The minimum number of characters is {{ password?.errors?.['minlength'].requiredLength }}
+        </small>
+      </div>
+      <div class="form-field">
+        <ion-input
+          [class.invalid]="repeatPassword?.hasError('passwordMismatch') && repeatPassword?.touched"
+          label="Repeat password"
+          type="password"
+          label-placement="floating"
+          fill="outline"
+          formControlName="repeatPassword"
+          placeholder="Repeat your password"></ion-input>
+        <small class="error-message"
+               *ngIf="repeatPassword?.hasError('required') && repeatPassword?.touched">
+          This field is required
+        </small>
+        <small class="error-message"
+               *ngIf="repeatPassword?.hasError('minlength') && repeatPassword?.touched">
+          The minimum number of characters is {{ repeatPassword?.errors?.['minlength'].requiredLength }}
+        </small>
+        <small class="error-message" *ngIf="repeatPassword?.hasError('passwordMismatch') && repeatPassword?.touched">
+          Passwords don't match
+        </small>
+      </div>
+      <div class="form-actions">
+        <ion-button
+          type="submit"
+          [disabled]="form.invalid"
+          class="custom-button orange">Sign Up
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>
