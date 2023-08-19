@@ -35,6 +35,14 @@
   transform: translateY(-50%);
 }
 
+.hide {
+  visibility: hidden;
+  position: absolute;
+  z-index: -99;
+  top: -999;
+  left: -999;
+}
+
 form {
   .form-field {
     margin-bottom: 1rem;

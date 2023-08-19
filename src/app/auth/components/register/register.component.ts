@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { passwordMatchValidator } from "../../../shared/form/form-validators/password-match.validator";
 
+
 interface IRegisterForm {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
@@ -27,7 +28,7 @@ interface IRegisterFormValue {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../../styles/base-auth.component.scss'],
+  styleUrls: ['../../styles/base-auth.component.scss']
 })
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
