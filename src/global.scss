@@ -102,3 +102,20 @@ ion-radio {
     border-radius: 50%;
   }
 }
+
+.ion-color-orange {
+  --ion-color-base: #FF6600FF;
+  --ion-color-base-rgb: #FF6600FF;
+  --ion-color-contrast: #fff;
+  --ion-color-contrast-rgb: #fff;
+  --ion-color-shade: #fff;
+  --ion-color-tint: #fff;
+}
+
+ion-datetime {
+  --background: #333;
+  --background-rgb: 255, 241, 242;
+
+  border-radius: 16px;
+  box-shadow: rgba(#333, 0.3) 0 10px 15px -3px;
+}

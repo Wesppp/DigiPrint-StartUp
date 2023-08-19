@@ -7,13 +7,15 @@ import { EmailControlComponent } from "./email-control/email-control.component";
 import { PasswordControlComponent } from "./password-control/password-control.component";
 import { RepeatPasswordControlComponent } from "./repeat-password-control/repeat-password-control.component";
 import { TextControlComponent } from "./text-control/text-control.component";
+import { DatepickerControlComponent } from './datepicker-control/datepicker-control.component';
 
 @NgModule({
   declarations: [
     EmailControlComponent,
     PasswordControlComponent,
     RepeatPasswordControlComponent,
-    TextControlComponent
+    TextControlComponent,
+    DatepickerControlComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { TextControlComponent } from "./text-control/text-control.component";
     TextControlComponent,
     EmailControlComponent,
     PasswordControlComponent,
-    RepeatPasswordControlComponent
+    RepeatPasswordControlComponent,
+    DatepickerControlComponent
   ]
 })
 export class FormControlsModule { }

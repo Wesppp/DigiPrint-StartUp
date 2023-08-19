@@ -35,14 +35,23 @@
             ></app-text-control>
           </div>
           <div class="form-field">
-            <ion-radio-group formControlName="gender">
+            <app-datepicker-control
+              [control]="form.controls['birthDate']"
+            ></app-datepicker-control>
+          </div>
+          <div class="form-field">
+            <ion-radio-group
+              value="male"
+              formControlName="gender">
               <ion-item>
                 <ion-label>Male</ion-label>
-                <ion-radio value="male"></ion-radio>
+                <ion-radio
+                  value="male"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>Female</ion-label>
-                <ion-radio value="female"></ion-radio>
+                <ion-radio
+                  value="female"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </div>

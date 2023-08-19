@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 
 import { passwordMatchValidator } from "../../../shared/form/form-validators/password-match.validator";
 
@@ -17,6 +18,10 @@ interface IRegisterFormValue {
   email: string;
   password: string;
   repeatPassword: string;
+  firstname: string;
+  lastname: string;
+  birthDate: Date;
+  gender: string;
 }
 
 @Component({
@@ -28,7 +33,8 @@ export class RegisterComponent implements OnInit {
   public form!: FormGroup;
   public fromFieldsShowNumber: number = 1;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private router: Router) { }
 
   public ngOnInit(): void {
     this.createForm();
@@ -36,25 +42,25 @@ export class RegisterComponent implements OnInit {
 
   private createForm(): void {
     this.form = this.fb.group<IRegisterForm>({
-      email: this.fb.control('', [
+      email: this.fb.control('m@mail.ru', [
         Validators.required,
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
       ]),
-      password: this.fb.control('', [
+      password: this.fb.control('Misha@1', [
         Validators.required,
         Validators.minLength(6),
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/) // only for eng language
       ]),
-      repeatPassword: this.fb.control('', [
+      repeatPassword: this.fb.control('Misha@1', [
         Validators.required,
         Validators.minLength(6)
       ]),
-      firstname: this.fb.control('', [
+      firstname: this.fb.control('Misha', [
         Validators.required,
         Validators.minLength(2),
         Validators.pattern(/^[a-zA-Z0-9]+$/)
       ]),
-      lastname: this.fb.control('', [
+      lastname: this.fb.control('Misha', [
         Validators.required,
         Validators.minLength(2),
         Validators.pattern(/^[a-zA-Z0-9]+$/)
@@ -62,8 +68,8 @@ export class RegisterComponent implements OnInit {
       birthDate: this.fb.control(null, [
         Validators.required
       ]),
-      gender: this.fb.control('', [
-
+      gender: this.fb.control('male', [
+        Validators.required
       ]),
     }, {
       validators: passwordMatchValidator
@@ -71,11 +77,11 @@ export class RegisterComponent implements OnInit {
   }
 
   public onRegister(formValue: IRegisterFormValue): void {
-    const { email, password } = formValue;
-
-    console.log(email, password);
+    console.log(formValue);
 
     this.form.reset();
+
+    this.router.navigateByUrl('/auth/login');
   }
 
   public onContinueRegistration(): void {
