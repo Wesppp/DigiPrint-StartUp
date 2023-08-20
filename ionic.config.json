@@ -1,5 +1,7 @@
 {
   "name": "DigiPrint",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
