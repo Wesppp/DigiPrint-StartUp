@@ -1,0 +1,95 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <div class="header__text">
+      <span class="header__text__line header__text__line--active">Sign Up</span>
+      <span class="header__text__line">Sign In</span>
+    </div>
+  </div>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onRegister(form.value)">
+      <div
+        [ngClass]="{
+            'hide': fromFieldsShowNumber !== 1
+          }">
+        <div class="form-field">
+          <app-email-control [control]="form.controls['email']"></app-email-control>
+        </div>
+        <div class="form-field">
+          <app-password-control [control]="form.controls['password']"></app-password-control>
+        </div>
+        <div class="form-field">
+          <app-repeat-password-control [control]="form.controls['repeatPassword']"></app-repeat-password-control>
+        </div>
+      </div>
+      <div
+        [ngClass]="{
+            'hide': fromFieldsShowNumber !== 2
+          }">
+        <div class="form-field">
+          <app-text-control
+            [label]="'Firstname'"
+            [placeholder]="'Enter your firstname'"
+            [control]="form.controls['firstname']"
+          ></app-text-control>
+        </div>
+        <div class="form-field">
+          <app-text-control
+            [label]="'Lastname'"
+            [placeholder]="'Enter your lastname'"
+            [control]="form.controls['lastname']"
+          ></app-text-control>
+        </div>
+        <div class="form-field">
+          <app-datepicker-control
+            [control]="form.controls['birthDate']"
+          ></app-datepicker-control>
+        </div>
+        <div class="form-field">
+          <ion-radio-group
+            value="male"
+            formControlName="gender">
+            <ion-item>
+              <ion-label>Male</ion-label>
+              <ion-radio
+                value="male"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Female</ion-label>
+              <ion-radio
+                value="female"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </div>
+      </div>
+      <div class="route-link">
+        <a routerLink="/auth/login">Go to sign in</a>
+      </div>
+      <div class="form-actions">
+        <ng-container [ngSwitch]="fromFieldsShowNumber">
+          <ng-container *ngSwitchCase="1">
+            <ion-button
+              type="button"
+              (click)="onContinueRegistration()"
+              class="custom-button orange">
+              Сontinue
+            </ion-button>
+          </ng-container>
+          <ng-container *ngSwitchCase="2">
+            <ion-button
+              type="button"
+              (click)="onBackRegistration()"
+              class="custom-button orange">
+              Back
+            </ion-button>
+            <ion-button
+              type="submit"
+              [disabled]="form.invalid"
+              class="custom-button orange">
+              Sign Up
+            </ion-button>
+          </ng-container>
+        </ng-container>
+      </div>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,17 @@
+<div class="datetime-btn__wrapper">
+  <label for="datetime-btn">Specify the date of birth</label>
+  <ion-datetime-button
+    id="datetime-btn"
+    datetime="datetime"></ion-datetime-button>
+</div>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime
+      color="orange"
+      [max]="minDate"
+      [formControl]="formControl"
+      presentation="date"
+      id="datetime"></ion-datetime>
+  </ng-template>
+</ion-modal>

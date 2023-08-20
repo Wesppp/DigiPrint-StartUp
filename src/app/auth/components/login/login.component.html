@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <div class="header__text">
+      <span class="header__text__line">Sign Up</span>
+      <span class="header__text__line header__text__line--active">Sign In</span>
+    </div>
+  </div>
+  <div class="container">
+    <form [formGroup]="form" (ngSubmit)="onRegister(form.value)">
+      <div class="form-field">
+        <app-email-control [control]="form.controls['email']"></app-email-control>
+      </div>
+      <div class="form-field">
+        <app-password-control [control]="form.controls['password']"></app-password-control>
+      </div>
+      <div class="route-link">
+        <a routerLink="/auth/register">Go to sign up</a>
+      </div>
+      <div class="form-actions">
+        <ion-button
+          type="submit"
+          [disabled]="form.invalid"
+          class="custom-button orange">Sign In
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

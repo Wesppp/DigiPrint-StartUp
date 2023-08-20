@@ -1,0 +1,60 @@
+@import "src/styles/constants";
+
+.header {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+
+    &__line {
+      &--active {
+        color: $orange;
+        text-shadow: 0 0 5px $dull-orange;
+      }
+    }
+  }
+}
+
+.container {
+  form {
+    padding: 0 2rem;
+
+    .route-link {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+
+      a {
+        color: $orange;
+        text-decoration: underline;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+
+      ion-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+ion-radio-group {
+  display: flex;
+  gap: 1rem;
+
+  ion-item {
+    ion-label {
+      margin-right: 10px;
+    }
+  }
+}
