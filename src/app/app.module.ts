@@ -18,7 +18,7 @@ import { OceanWavesComponent } from "./shared/components/ocean-waves/ocean-waves
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
