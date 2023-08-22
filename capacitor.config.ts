@@ -1,4 +1,5 @@
 import { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardResize } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
   appId: 'com.digiprint.app',
@@ -16,6 +17,11 @@ const config: CapacitorConfig = {
       SplashShowOnlyFirstTime: 'false',
       SplashScreen: 'screen',
       SplashScreenDelay: '3000'
+    }
+  },
+  plugins: {
+    Keyboard: {
+      resize: KeyboardResize.None
     }
   }
 };
