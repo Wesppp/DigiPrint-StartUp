@@ -8,11 +8,13 @@ import { RegisterComponent } from "./components/register/register.component";
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LoginComponent } from "./components/login/login.component";
 import { FormControlsModule } from "../shared/form/form-controls/form-controls.module";
+import { OceanWavesComponent } from '../shared/components/ocean-waves/ocean-waves.component';
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    OceanWavesComponent,
   ],
   imports: [
     CommonModule,
