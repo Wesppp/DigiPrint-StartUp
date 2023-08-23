@@ -3,8 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 
 import { passwordMatchValidator } from "../../../shared/form/form-validators/password-match.validator";
-import { KeyboardComponent } from '../../../shared/components/keyboard/keyboard.component';
-
 
 interface IRegisterForm {
   email: FormControl<string | null>;
@@ -32,19 +30,16 @@ interface IRegisterFormValue {
   styleUrls: ['../../styles/base-auth.component.scss']
 })
 export class RegisterComponent
-  extends KeyboardComponent
   implements OnInit {
   public form!: FormGroup;
   public fromFieldsShowNumber: number = 1;
 
   constructor(private fb: FormBuilder,
               private router: Router) {
-    super();
   }
 
   public ngOnInit(): void {
     this.createForm();
-    this.initializeKeyboard();
   }
 
   private createForm(): void {
