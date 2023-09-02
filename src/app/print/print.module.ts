@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PrintComponent } from './components/print/print.component';
 import { IonicModule } from '@ionic/angular';
 import { PrintRoutingModule } from './print-routing.module';
-import { BiometricWrapper } from '@awesome-cordova-plugins/biometric-wrapper/ngx';
+import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx'
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { BiometricWrapper } from '@awesome-cordova-plugins/biometric-wrapper/ngx
     PrintRoutingModule
   ],
   providers:[
-    BiometricWrapper
+    FingerprintAIO
   ]
 })
 export class PrintModule { }

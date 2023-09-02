@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BiometricWrapper } from '@awesome-cordova-plugins/biometric-wrapper/ngx';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
-// import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 @Component({
   selector: 'app-print',
@@ -11,23 +10,22 @@ import { BiometricWrapper } from '@awesome-cordova-plugins/biometric-wrapper/ngx
 export class PrintComponent implements OnInit {
   public s: string = '';
 
-  constructor(private biometricWrapper: BiometricWrapper) {
+  constructor(private faio: FingerprintAIO) {
   }
 
   public ngOnInit(): void {
   }
 
   public print(): void {
-    this.biometricWrapper.activateFingerprint({
-      title: 'HELLO',
-    })
-      .then((res: any) => {
-        this.s = 'result' + res;
-        console.log('result: ', res);
-      })
-      .catch((error: any) => {
-        this.s = 'error' + error;
-        console.log('error: ', error);
-      });
+    this.faio.isAvailable().then(
+      ()=>{
+        this.faio.show({}).then((val)=>{
+          alert(JSON.stringify(val))
+        })
+      },
+      (err)=>{
+        alert('fingerPrint not available')
+      }
+    )
   }
 }
