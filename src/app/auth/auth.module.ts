@@ -6,6 +6,7 @@ import { IonicModule } from "@ionic/angular";
 import { AuthService } from "./services/auth.service";
 import { RegisterComponent } from "./components/register/register.component";
 import { AuthRoutingModule } from "./auth-routing.module";
+import { OceanWavesModule } from '../shared/modules/ocean-waves/ocean-waves.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AuthRoutingModule } from "./auth-routing.module";
     CommonModule,
     AuthRoutingModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OceanWavesModule
   ],
   providers: [
     AuthService

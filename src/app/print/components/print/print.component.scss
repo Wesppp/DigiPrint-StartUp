@@ -2,10 +2,12 @@
 
 .header {
   text-align: center;
+  padding: 0.5rem;
 
   &__title {
     font-size: 2.05rem;
     font-family: monospace;
+    font-weight: bold;
     color: $orange;
     text-shadow: 0 0 10px $dull-orange;
   }
@@ -13,4 +15,13 @@
 
 .container {
   text-align: center;
+
+  ion-button {
+    --border-radius: 50%;
+
+    img {
+      width: 60px;
+      height: 65px;
+    }
+  }
 }

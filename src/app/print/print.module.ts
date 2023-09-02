@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PrintComponent } from './components/print/print.component';
 import { IonicModule } from '@ionic/angular';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+
+import { PrintComponent } from './components/print/print.component';
 import { PrintRoutingModule } from './print-routing.module';
-import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx'
+import { OceanWavesModule } from '../shared/modules/ocean-waves/ocean-waves.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx'
   imports: [
     CommonModule,
     IonicModule,
-    PrintRoutingModule
+    PrintRoutingModule,
+    OceanWavesModule
   ],
-  providers:[
-    FingerprintAIO
+  providers: [
+    FingerprintAIO,
   ]
 })
-export class PrintModule { }
+export class PrintModule {
+}
