@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 
+import { Subject, takeUntil } from 'rxjs';
+
 import { passwordMatchValidator } from "../../../shared/form/form-validators/password-match.validator";
+import { KeyboardTrackerService } from '../../../shared/services/keyboard-tracker.service';
 
 interface IRegisterForm {
   email: FormControl<string | null>;
@@ -30,16 +33,32 @@ interface IRegisterFormValue {
   styleUrls: ['../../styles/base-auth.component.scss']
 })
 export class RegisterComponent
-  implements OnInit {
+  implements OnInit, OnDestroy {
   public form!: FormGroup;
   public fromFieldsShowNumber: number = 1;
+  public log: string = '';
+  public isKeyboardOpenedState!: boolean;
+
+  private unsubscribe$ = new Subject<void>();
 
   constructor(private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private keyboardTrackerService: KeyboardTrackerService) {
   }
 
   public ngOnInit(): void {
+    this.keyboardTrackerService.isKeyboardOpenedState$.pipe(
+      takeUntil(this.unsubscribe$)
+    ).subscribe((value: boolean) => {
+      this.isKeyboardOpenedState = value;
+    });
+
     this.createForm();
+  }
+
+  public ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private createForm(): void {

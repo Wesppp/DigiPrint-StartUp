@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ScreenOrientation
+    ScreenOrientation,
+    Keyboard
   ],
   bootstrap: [
     AppComponent

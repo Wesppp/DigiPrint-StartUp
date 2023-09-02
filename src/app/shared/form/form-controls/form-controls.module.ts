@@ -8,6 +8,7 @@ import { PasswordControlComponent } from "./password-control/password-control.co
 import { RepeatPasswordControlComponent } from "./repeat-password-control/repeat-password-control.component";
 import { TextControlComponent } from "./text-control/text-control.component";
 import { DatepickerControlComponent } from './datepicker-control/datepicker-control.component';
+import { FocusTrackerDirective } from '../../directives/focus-tracker.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DatepickerControlComponent } from './datepicker-control/datepicker-cont
     PasswordControlComponent,
     RepeatPasswordControlComponent,
     TextControlComponent,
-    DatepickerControlComponent
+    DatepickerControlComponent,
+    FocusTrackerDirective
   ],
   imports: [
     CommonModule,
