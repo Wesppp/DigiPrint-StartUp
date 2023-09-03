@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+
+import { Platform } from '@ionic/angular';
+
+import {
+  KeyboardTrackerComponent
+} from '../../../shared/components/keyboard-tracker/keyboard-tracker.component';
+import { zoomInAnimation, zoomOutAnimation } from '../../../../animations/zoom.animation';
+import { fadeInDownAnimation, fadeOutUpAnimation } from '../../../../animations/fade.animation';
 
 interface ILoginForm {
   email: FormControl<string | null>;
@@ -15,14 +22,28 @@ interface ILoginFormValue {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../../styles/base-auth.component.scss']
+  styleUrls: ['../../styles/base-auth.component.scss'],
+  animations: [
+    fadeOutUpAnimation,
+    fadeInDownAnimation,
+    zoomOutAnimation,
+    zoomInAnimation
+  ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent
+  extends KeyboardTrackerComponent
+  implements OnInit {
   public form!: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              cdr: ChangeDetectorRef,
+              platform: Platform) {
+    super(cdr, platform);
+  }
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
+    super.ngOnInit();
+
     this.createForm();
   }
 

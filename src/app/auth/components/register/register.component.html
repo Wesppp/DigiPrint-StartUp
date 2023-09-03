@@ -1,5 +1,8 @@
 <ion-content [fullscreen]="true">
   <div
+    @fadeInDown
+    @fadeOutUp
+    *ngIf="!isKeyboardOpened"
     class="header">
     <div class="header__text">
       <span class="header__text__line header__text__line--active">Sign Up</span>
@@ -94,6 +97,9 @@
     </form>
   </div>
   <app-ocean-waves
+    @zoomOut
+    @zoomIn
+    *ngIf="!isKeyboardOpened"
   ></app-ocean-waves>
 </ion-content>
 

@@ -1,14 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { Router } from '@angular/router';
 
-import { Subject } from 'rxjs';
+import { Platform } from '@ionic/angular';
 
 import {
   passwordMatchValidator,
 } from '../../../shared/form/form-validators/password-match.validator';
-import { KeyboardTrackerService } from '../../../shared/services/keyboard-tracker.service';
+import {
+  KeyboardTrackerComponent
+} from '../../../shared/components/keyboard-tracker/keyboard-tracker.component';
+import { fadeInDownAnimation, fadeOutUpAnimation } from '../../../../animations/fade.animation';
+import { zoomInAnimation, zoomOutAnimation } from '../../../../animations/zoom.animation';
 
 interface IRegisterForm {
   email: FormControl<string | null>;
@@ -34,27 +37,30 @@ interface IRegisterFormValue {
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['../../styles/base-auth.component.scss'],
+  animations: [
+    fadeOutUpAnimation,
+    fadeInDownAnimation,
+    zoomOutAnimation,
+    zoomInAnimation
+  ]
 })
 export class RegisterComponent
-  implements OnInit, OnDestroy {
+  extends KeyboardTrackerComponent
+  implements OnInit {
   public form!: FormGroup;
   public fromFieldsShowNumber: number = 1;
-  public isKeyboardOpened!: boolean;
-
-  private unsubscribe$ = new Subject<void>();
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private keyboardTrackerService: KeyboardTrackerService) {
+              cdr: ChangeDetectorRef,
+              platform: Platform) {
+    super(cdr, platform);
   }
 
-  public ngOnInit(): void {
+  public override ngOnInit(): void {
+    super.ngOnInit();
+
     this.createForm();
-  }
-
-  public ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   private createForm(): void {
