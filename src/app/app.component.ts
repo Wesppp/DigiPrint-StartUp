@@ -14,15 +14,4 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     this.screenOrientation.lock('portrait');
   }
-
-  // private trackKeyboard(): void {
-  //   this.platform.keyboardDidShow.subscribe(() => {
-  //     this.keyboardTrackerService.updateDisplaySizeDecreasedState(true);
-  //     this.cdr.detectChanges();
-  //   });
-  //   this.platform.keyboardDidHide.subscribe(() => {
-  //     this.keyboardTrackerService.updateDisplaySizeDecreasedState(false);
-  //     this.cdr.detectChanges();
-  //   });
-  // }
 }

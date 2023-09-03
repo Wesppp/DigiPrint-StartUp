@@ -6,7 +6,7 @@ import { AbstractControl, FormControl } from "@angular/forms";
   templateUrl: './base-form-control.component.html'
 })
 export class BaseFormControlComponent {
-  @Input() control!: AbstractControl;
+  @Input() public control!: AbstractControl;
 
   public get formControl(): FormControl {
     return this.control as FormControl;
