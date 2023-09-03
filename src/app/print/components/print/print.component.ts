@@ -25,6 +25,7 @@ const failurePrintAlert: IAlert = {
   styleUrls: ['./print.component.scss'],
 })
 export class PrintComponent implements OnInit {
+  public isBlinking: boolean = false;
   constructor(private faio: FingerprintAIO,
               private alertService: AlertService) {
   }
@@ -33,14 +34,18 @@ export class PrintComponent implements OnInit {
   }
 
   public print(): void {
+    this.isBlinking = true;
+
     this.faio.isAvailable().then(
-      ()=>{
+      ()=> {
         this.faio.show({}).then(() => {
           this.alertService.showAlert(successPrintAlert);
+          this.isBlinking = false;
         });
       },
       ()=> {
         this.alertService.showAlert(failurePrintAlert);
+        this.isBlinking = false;
       }
     )
   }

@@ -9,7 +9,10 @@
       (click)="print()"
       type="button"
       class="custom-button orange">
-      <img src="assets/icon/fingerprint.svg" alt="Print">
+      <img
+        [class.blinking-active]="isBlinking"
+        src="assets/icon/fingerprint.svg"
+        alt="Print">
     </ion-button>
   </div>
   <app-ocean-waves></app-ocean-waves>
