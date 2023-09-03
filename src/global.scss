@@ -25,12 +25,105 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-.container {
-  text-align: center;
+@import "src/styles/constants";
 
+.container {
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.hide {
+  visibility: hidden;
+  position: absolute;
+  z-index: -99;
+  top: -999;
+  left: -999;
+}
+
+form {
+  .form-field {
+    margin-bottom: 1rem;
+
+    .error-message {
+      color: $err;
+      margin-top: 4px;
+    }
+
+    small {
+      display: inline-block;
+    }
+  }
+}
+
+.custom-button {
+  &.orange {
+    --background: #ff6600;
+    --background-hover: #ff6600;
+    --background-activated: #ff6600;
+    --background-focused: #ff6600;
+
+    --color: #fff;
+    font-weight: 550;
+
+    --border-radius: 20px;
+    --border-color: #ff6600;
+    --border-style: solid;
+    --border-width: 1px;
+
+    --box-shadow: 0 2px 6px 0 rgba(255, 102, 0, 0.5);
+
+    --ripple-color: deeppink;
+
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+  }
+}
+
+ion-input {
+  --ion-color-primary: #ff6600;
+  --ion-color-primary-contrast: #ff6600;
+  --ion-border-color: #ff6600;
+
+  &.ion-focused {
+    --ion-color-primary: #ff6600;
+    --ion-color-primary-contrast: #ff6600;
+    --ion-border-color: #ff6600;
+  }
+}
+
+ion-radio {
+  --color-checked: $orange;
+
+  &.radio-checked::part(container) {
+    background: transparent;
+    border-color: $orange;
+  }
+
+  &.radio-checked::part(mark) {
+    width: 8px;
+    height: 8px;
+
+    background: $orange;
+    border-radius: 50%;
+  }
+}
+
+.ion-color-orange {
+  --ion-color-base: #FF6600FF;
+  --ion-color-base-rgb: #FF6600FF;
+  --ion-color-contrast: #fff;
+  --ion-color-contrast-rgb: #fff;
+  --ion-color-shade: #fff;
+  --ion-color-tint: #fff;
+}
+
+ion-datetime {
+  --background: #333;
+  --background-rgb: 255, 241, 242;
+
+  border-radius: 16px;
+  box-shadow: rgba(#333, 0.3) 0 10px 15px -3px;
 }
