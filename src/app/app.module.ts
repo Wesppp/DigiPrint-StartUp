@@ -9,11 +9,10 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { OceanWavesComponent } from "./shared/components/ocean-waves/ocean-waves.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,10 +23,11 @@ import { OceanWavesComponent } from "./shared/components/ocean-waves/ocean-waves
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ScreenOrientation,
-    Keyboard
+    Keyboard,
   ],
   bootstrap: [
     AppComponent,
-  ]
+  ],
 })
-export class AppModule {}
+export class AppModule {
+}
