@@ -1,7 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
+import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.evgeny.sex',
+  appId: 'com.digiprint.app',
   appName: 'DigiPrint',
   webDir: 'www',
   server: {
@@ -16,6 +17,13 @@ const config: CapacitorConfig = {
       SplashShowOnlyFirstTime: 'false',
       SplashScreen: 'screen',
       SplashScreenDelay: '3000'
+    }
+  },
+  plugins: {
+    Keyboard: {
+      resize: KeyboardResize.Body,
+      style: KeyboardStyle.Dark,
+      resizeOnFullScreen: true,
     }
   }
 };

@@ -35,6 +35,14 @@
   transform: translateY(-50%);
 }
 
+.hide {
+  visibility: hidden;
+  position: absolute;
+  z-index: -99;
+  top: -999;
+  left: -999;
+}
+
 form {
   .form-field {
     margin-bottom: 1rem;
@@ -84,4 +92,38 @@ ion-input {
     --ion-color-primary-contrast: #ff6600;
     --ion-border-color: #ff6600;
   }
+}
+
+ion-radio {
+  --color-checked: $orange;
+
+  &.radio-checked::part(container) {
+    background: transparent;
+    border-color: $orange;
+  }
+
+  &.radio-checked::part(mark) {
+    width: 8px;
+    height: 8px;
+
+    background: $orange;
+    border-radius: 50%;
+  }
+}
+
+.ion-color-orange {
+  --ion-color-base: #FF6600FF;
+  --ion-color-base-rgb: #FF6600FF;
+  --ion-color-contrast: #fff;
+  --ion-color-contrast-rgb: #fff;
+  --ion-color-shade: #fff;
+  --ion-color-tint: #fff;
+}
+
+ion-datetime {
+  --background: #333;
+  --background-rgb: 255, 241, 242;
+
+  border-radius: 16px;
+  box-shadow: rgba(#333, 0.3) 0 10px 15px -3px;
 }

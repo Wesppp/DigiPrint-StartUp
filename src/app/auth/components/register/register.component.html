@@ -1,5 +1,9 @@
 <ion-content [fullscreen]="true">
-  <div class="header">
+  <div
+    @fadeInDown
+    @fadeOutUp
+    *ngIf="!isKeyboardOpened"
+    class="header">
     <div class="header__text">
       <span class="header__text__line header__text__line--active">Sign Up</span>
       <span class="header__text__line">Sign In</span>
@@ -7,74 +11,94 @@
   </div>
   <div class="container">
     <form [formGroup]="form" (ngSubmit)="onRegister(form.value)">
-      <div class="form-field">
-        <ion-input
-          [class.invalid]="email?.invalid && email?.touched"
-          label="Email"
-          label-placement="floating"
-          fill="outline"
-          type="email"
-          formControlName="email"
-          placeholder="Enter your email"></ion-input>
-        <small class="error-message"
-               *ngIf="email?.hasError('required') && email?.touched">
-          This field is required
-        </small>
-        <small class="error-message"
-               *ngIf="email?.hasError('pattern') && email?.touched">
-          Please enter a valid email
-        </small>
+      <div
+        [ngClass]="{
+            'hide': fromFieldsShowNumber !== 1
+          }">
+        <div class="form-field">
+          <app-email-control [control]="form.controls['email']"></app-email-control>
+        </div>
+        <div class="form-field">
+          <app-password-control [control]="form.controls['password']"></app-password-control>
+        </div>
+        <div class="form-field">
+          <app-repeat-password-control [control]="form.controls['repeatPassword']"></app-repeat-password-control>
+        </div>
       </div>
-      <div class="form-field">
-        <ion-input
-          [class.invalid]="password?.invalid && password?.touched"
-          label="Password"
-          label-placement="floating"
-          fill="outline"
-          type="password"
-          formControlName="password"
-          placeholder="Enter password"></ion-input>
-        <small class="error-message" *ngIf="password?.hasError('pattern') && password?.touched">
-          Weak password (you must use special characters, numbers, uppercase and uppercase letters)
-        </small>
-        <small class="error-message"
-               *ngIf="password?.hasError('required') && password?.touched">
-          This field is required
-        </small>
-        <small class="error-message"
-               *ngIf="password?.hasError('minlength') && password?.touched">
-          The minimum number of characters is {{ password?.errors?.['minlength'].requiredLength }}
-        </small>
+      <div
+        [ngClass]="{
+            'hide': fromFieldsShowNumber !== 2
+          }">
+        <div class="form-field">
+          <app-text-control
+            [label]="'Firstname'"
+            [placeholder]="'Enter your firstname'"
+            [control]="form.controls['firstname']"
+          ></app-text-control>
+        </div>
+        <div class="form-field">
+          <app-text-control
+            [label]="'Lastname'"
+            [placeholder]="'Enter your lastname'"
+            [control]="form.controls['lastname']"
+          ></app-text-control>
+        </div>
+        <div class="form-field">
+          <app-datepicker-control
+            [control]="form.controls['birthDate']"
+          ></app-datepicker-control>
+        </div>
+        <div class="form-field">
+          <ion-radio-group
+            value="male"
+            formControlName="gender">
+            <ion-item>
+              <ion-label>Male</ion-label>
+              <ion-radio
+                value="male"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Female</ion-label>
+              <ion-radio
+                value="female"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </div>
       </div>
-      <div class="form-field">
-        <ion-input
-          [class.invalid]="repeatPassword?.hasError('passwordMismatch') && repeatPassword?.touched"
-          label="Repeat password"
-          type="password"
-          label-placement="floating"
-          fill="outline"
-          formControlName="repeatPassword"
-          placeholder="Repeat your password"></ion-input>
-        <small class="error-message"
-               *ngIf="repeatPassword?.hasError('required') && repeatPassword?.touched">
-          This field is required
-        </small>
-        <small class="error-message"
-               *ngIf="repeatPassword?.hasError('minlength') && repeatPassword?.touched">
-          The minimum number of characters is {{ repeatPassword?.errors?.['minlength'].requiredLength }}
-        </small>
-        <small class="error-message" *ngIf="repeatPassword?.hasError('passwordMismatch') && repeatPassword?.touched">
-          Passwords don't match
-        </small>
+      <div class="route-link">
+        <a routerLink="/auth/login">Go to sign in</a>
       </div>
       <div class="form-actions">
-        <ion-button
-          type="submit"
-          [disabled]="form.invalid"
-          class="custom-button orange">Sign Up
-        </ion-button>
+        <ng-container [ngSwitch]="fromFieldsShowNumber">
+          <ng-container *ngSwitchCase="1">
+            <ion-button
+              type="button"
+              (click)="onContinueRegistration()"
+              class="custom-button orange">
+              Сontinue
+            </ion-button>
+          </ng-container>
+          <ng-container *ngSwitchCase="2">
+            <ion-button
+              type="button"
+              (click)="onBackRegistration()"
+              class="custom-button orange">
+              Back
+            </ion-button>
+            <ion-button
+              type="submit"
+              [disabled]="form.invalid"
+              class="custom-button orange">
+              Sign Up
+            </ion-button>
+          </ng-container>
+        </ng-container>
       </div>
     </form>
   </div>
-  <app-ocean-waves></app-ocean-waves>
+  <app-ocean-waves
+    @zoomOut
+    @zoomIn
+    *ngIf="!isKeyboardOpened"
+  ></app-ocean-waves>
 </ion-content>

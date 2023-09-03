@@ -26,10 +26,35 @@
   form {
     padding: 0 2rem;
 
+    .route-link {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+
+      a {
+        color: $orange;
+        text-decoration: underline;
+      }
+    }
+
     .form-actions {
+      display: flex;
+      gap: 1rem;
+
       ion-button {
         width: 100%;
       }
+    }
+  }
+}
+
+ion-radio-group {
+  display: flex;
+  gap: 1rem;
+
+  ion-item {
+    ion-label {
+      margin-right: 10px;
     }
   }
 }
