@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Keyboard } from '@capacitor/keyboard';
 
-import { passwordMatchValidator } from "../../../shared/form/form-validators/password-match.validator";
+import {
+  passwordMatchValidator,
+} from '../../../shared/form/form-validators/password-match.validator';
 
 interface IRegisterForm {
   email: FormControl<string | null>;
@@ -27,54 +30,69 @@ interface IRegisterFormValue {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../../styles/base-auth.component.scss']
+  styleUrls: ['../../styles/base-auth.component.scss'],
 })
 export class RegisterComponent
-  implements OnInit {
+  implements OnInit, OnDestroy {
   public form!: FormGroup;
   public fromFieldsShowNumber: number = 1;
+  public keyboardIsShown: boolean = false;
 
   constructor(private fb: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private cd: ChangeDetectorRef) {
   }
 
   public ngOnInit(): void {
+    Keyboard.addListener('keyboardWillShow', info => {
+      this.keyboardIsShown = true;
+      this.cd.detectChanges();
+    });
+    Keyboard.addListener('keyboardWillHide', () => {
+      this.keyboardIsShown = false;
+      this.cd.detectChanges();
+    });
     this.createForm();
   }
+
+  public ngOnDestroy() {
+    Keyboard.removeAllListeners();
+  }
+
 
   private createForm(): void {
     this.form = this.fb.group<IRegisterForm>({
       email: this.fb.control('', [
         Validators.required,
-        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
       ]),
       password: this.fb.control('', [
         Validators.required,
         Validators.minLength(6),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/) // only for eng language
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/), // only for eng language
       ]),
       repeatPassword: this.fb.control('', [
         Validators.required,
-        Validators.minLength(6)
+        Validators.minLength(6),
       ]),
       firstname: this.fb.control('', [
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern(/^[a-zA-Z0-9]+$/)
+        Validators.pattern(/^[a-zA-Z0-9]+$/),
       ]),
       lastname: this.fb.control('', [
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern(/^[a-zA-Z0-9]+$/)
+        Validators.pattern(/^[a-zA-Z0-9]+$/),
       ]),
       birthDate: this.fb.control(null, [
-        Validators.required
+        Validators.required,
       ]),
       gender: this.fb.control('male', [
-        Validators.required
+        Validators.required,
       ]),
     }, {
-      validators: passwordMatchValidator
+      validators: passwordMatchValidator,
     });
   }
 

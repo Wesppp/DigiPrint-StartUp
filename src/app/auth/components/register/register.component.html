@@ -1,6 +1,8 @@
 <ion-content [fullscreen]="true">
   <div
-    class="header">
+    class="header"
+    *ngIf="!keyboardIsShown"
+  >
     <div class="header__text">
       <span class="header__text__line header__text__line--active">Sign Up</span>
       <span class="header__text__line">Sign In</span>
@@ -93,7 +95,10 @@
       </div>
     </form>
   </div>
-  <app-ocean-waves
-  ></app-ocean-waves>
+  <ng-template
+    *ngIf="!keyboardIsShown">
+    <app-ocean-waves
+    ></app-ocean-waves>
+  </ng-template>
 </ion-content>
 
