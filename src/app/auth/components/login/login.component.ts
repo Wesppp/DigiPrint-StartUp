@@ -8,15 +8,12 @@ import {
 } from '../../../shared/components/keyboard-tracker/keyboard-tracker.component';
 import { zoomInAnimation, zoomOutAnimation } from '../../../../animations/zoom.animation';
 import { fadeInDownAnimation, fadeOutUpAnimation } from '../../../../animations/fade.animation';
+import { ILoginRequest } from '../../interfaces/loginRequest.interface';
+import { AuthService } from '../../services/auth.service';
 
 interface ILoginForm {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
-}
-
-interface ILoginFormValue {
-  email: string;
-  password: string;
 }
 
 @Component({
@@ -36,6 +33,7 @@ export class LoginComponent
   public form!: FormGroup;
 
   constructor(private fb: FormBuilder,
+              private authService: AuthService,
               cdr: ChangeDetectorRef,
               platform: Platform) {
     super(cdr, platform);
@@ -61,10 +59,8 @@ export class LoginComponent
     });
   }
 
-  public onRegister(formValue: ILoginFormValue): void {
+  public onRegister(formValue: ILoginRequest): void {
     const { email, password } = formValue;
-
-    console.log(email, password);
 
     this.form.reset();
   }

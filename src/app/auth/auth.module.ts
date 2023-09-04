@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
+
 import { IonicModule } from "@ionic/angular";
 
 import { AuthService } from "./services/auth.service";
@@ -18,6 +20,7 @@ import { OceanWavesComponent } from '../shared/components/ocean-waves/ocean-wave
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     AuthRoutingModule,
     IonicModule,
     ReactiveFormsModule,
