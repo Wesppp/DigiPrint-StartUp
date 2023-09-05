@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'print',
+    loadChildren: () => import('./print/print.module').then(m => m.PrintModule)
+  },
+  {
     path: '',
     redirectTo: 'auth/register',
     pathMatch: 'full'

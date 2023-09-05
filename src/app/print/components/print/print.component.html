@@ -1,0 +1,19 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <h1 class="header__title">
+      Make a fingerprint
+    </h1>
+  </div>
+  <div class="container">
+    <ion-button
+      (click)="print()"
+      type="button"
+      class="custom-button orange">
+      <img
+        [class.blinking-active]="isBlinking"
+        src="assets/icon/fingerprint.svg"
+        alt="Print">
+    </ion-button>
+  </div>
+  <app-ocean-waves></app-ocean-waves>
+</ion-content>
