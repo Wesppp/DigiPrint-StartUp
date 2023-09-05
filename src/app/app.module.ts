@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,10 +23,11 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ScreenOrientation,
-    Keyboard
+    Keyboard,
   ],
   bootstrap: [
-    AppComponent
+    AppComponent,
   ],
 })
-export class AppModule {}
+export class AppModule {
+}
