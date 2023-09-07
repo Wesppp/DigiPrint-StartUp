@@ -13,7 +13,7 @@ import {
 import { fadeInDownAnimation, fadeOutUpAnimation } from '../../../../animations/fade.animation';
 import { zoomInAnimation, zoomOutAnimation } from '../../../../animations/zoom.animation';
 import { AuthService } from '../../services/auth.service';
-import { IRegisterFormValue } from '../../interfaces/registerFormValue.interface';
+import { IRegisterRequest } from '../../interfaces/registerRequest.interface';
 
 interface IRegisterForm {
   email: FormControl<string | null>;
@@ -92,9 +92,9 @@ export class RegisterComponent
     });
   }
 
-  public onRegister(formValue: IRegisterFormValue): void {
+  public onRegister(formValue: IRegisterRequest): void {
+    this.authService.register(formValue);
     this.form.reset();
-
     // redirect to phone page with formValue data
     this.router.navigateByUrl('/');
   }

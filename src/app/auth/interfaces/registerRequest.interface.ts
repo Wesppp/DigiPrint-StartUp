@@ -6,5 +6,4 @@ export interface IRegisterRequest {
   lastname: string;
   birthDate: Date;
   gender: string;
-  phone: string;
 }
