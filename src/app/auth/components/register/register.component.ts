@@ -28,7 +28,7 @@ interface IRegisterForm {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../../styles/base-auth.component.scss'],
+  styleUrls: ['../../../../styles/components/base-auth.component.scss'],
   animations: [
     fadeOutUpAnimation,
     fadeInDownAnimation,

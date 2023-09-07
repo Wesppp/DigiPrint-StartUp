@@ -19,7 +19,7 @@ interface ILoginForm {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../../styles/base-auth.component.scss'],
+  styleUrls: ['../../../../styles/components/base-auth.component.scss'],
   animations: [
     fadeOutUpAnimation,
     fadeInDownAnimation,
